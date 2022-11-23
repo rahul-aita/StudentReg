@@ -117,7 +117,7 @@ export class StudentDashboardComponent implements OnInit {
 
   DeleteStudent(data:any){
     this.api.deleteStudent(data.id).subscribe(res => {
-      alert("Record Deleted");
+      alert("are you sure want to delete");
       this.AllStudent();
     })
 
