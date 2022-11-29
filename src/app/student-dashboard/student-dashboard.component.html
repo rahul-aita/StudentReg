@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Student Dashboard</a>
+      <a class="navbar-brand" href="#">Student List</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>      
         <div class="d-flex">        
-          <button class="btn btn-success" type="submit"  data-bs-toggle="modal" data-bs-target="#exampleModal">registration form</button>
+          <button class="btn btn-success" type="submit"  data-bs-toggle="modal" data-bs-target="#exampleModal">Add student</button>
         </div>
       </div>
   </nav>
@@ -14,33 +14,29 @@
     <tr>
         <th>Id</th>
         <th>Name</th>
-        <th>Email Id</th>
-        <th>Phone Number</th>
+        <th>Department</th>
+        <th>Email</th>
+        <th>Mobile Number</th>
         <th>Street No</th>
         <th>city</th>
         <th>country</th>
-        <th>zipCode</th>
-        <th>collageName</th>
-        <th>degree</th>
-        <th>passingYear</th>
-        <th>%</th>
+        <th>pincode</th>
+
     </tr>
 </thead>
 <tbody>
     <tr *ngFor="let student of allstudent">
         <td>{{student.id}}</td>
         <td>{{student.name}}</td>
+        <td>{{student.department}}</td>
         <td>{{student.email}}</td>
-        <td>{{student.phone}}</td>
+        <td>{{student.mobile}}</td>
          <td>{{student.streetNo}}</td>
          <td>{{student.city}}</td>
         <td>{{student.state}}</td>
         <td>{{student.country}}</td>
-        <td>{{student.zipcode}}</td>
-        <td>{{student.collageName}}</td>
-        <td>{{student.degree}}</td>
-        <td>{{student.passingYear}}</td>
-        <td>{{student.percentage}}</td>
+        <td>{{student.pincode}}</td>
+       
         <td>
             <input type="button" value="Edit" (click)="EditStudent(student)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success me-2"/>
             <input type="button" value="Delete" (click)="DeleteStudent(student)" class="btn btn-danger"/>
@@ -70,13 +66,17 @@
                     <label for="inputName" class="form-label">Name</label>
                     <input type="text" formControlName="name" class="form-control" id="inputName" required>
                   </div>
+                  <div class="col-md-6">
+                    <label for="department" class="form-label">Department</label>
+                    <input type="department" formControlName="department" class="form-control" id="department" required>
+                  </div>
                 <div class="col-md-6">
                   <label for="inputEmail4" class="form-label">Email</label>
                   <input type="email" formControlName="email" class="form-control" id="inputEmail4" required>
                 </div>
                 <div class="col-md-6">
-                  <label for="phone" class="form-label">Phone</label>
-                  <input type="number" formControlName="phone" class="form-control" id="phone" required>
+                  <label for="mobile" class="form-label">Mobile</label>
+                  <input type="number" formControlName="mobile" class="form-control" id="mobile" required>
                 </div>
 
                 <div class="col-12">
@@ -85,15 +85,9 @@
                   <input type="text" class="form-contro mt-3" formControlName="city" id="city" placeholder="city" required>
                   <input type="text" class="form-control mt-3" formControlName="state" id="state" placeholder="state" required>
                   <input type="text" class="form-control mt-3" formControlName="country" id="country" placeholder="country" required>
-                  <input type="number" class="form-control mt-3" formControlName="zipcode" id="zipcode" placeholder="zipcode">
+                  <input type="number" class="form-control mt-3" formControlName="pincode" id="pincode" placeholder="pincode">
                 </div>
-                <div class="col-12">
-                  <label for="inputCity" class="form-label">education</label>
-                  <input type="text" class="form-control mt-3" id="collageName" formControlName="collageName" placeholder="collageName">
-                  <input type="text" class="form-control mt-3" id="degree" formControlName="degree" placeholder="degree">
-                  <input type="text" class="form-control mt-3" id="passingYear" formControlName="passingYear" placeholder="passingYear">
-                  <input type="text" class="form-control mt-3" id="percentage" formControlName="percentage" placeholder="percentage">
-                </div>
+              
               </form>
         </div>
         <div class="modal-footer">

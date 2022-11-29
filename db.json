@@ -1,5 +1,18 @@
 {
-  "posts": [],
+  "posts": [
+    {
+      "id": 1,
+      "name": "rahul kumar ",
+      "department": "cse",
+      "email": "baitharahulkumar2017@gmail.com",
+      "mobile": 7278023168,
+      "streetNo": "dhapa road kol",
+      "city": "kolkata",
+      "state": "wb",
+      "country": "India",
+      "pincode": 700105
+    }
+  ],
   "comments": [],
   "profile": {
     "name": "typicode"

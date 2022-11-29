@@ -4,7 +4,7 @@ import { ApiService } from '../shared/api.service';
 import { StudentModel } from './student.model';
 
 @Component({
-  selector: 'app-student-dashboard',
+  selector: 'app-dashboard-list',
   templateUrl: './student-dashboard.component.html',
   styleUrls: ['./student-dashboard.component.css']
 })
@@ -26,17 +26,14 @@ export class StudentDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.formValue = this.formBuilder.group({
       name:[''],
+      department:[''],
       email:[''],
-      phone:[''],
+      mobile:[''],
       streetNo:[''],
       city:[''],
       state:[''],
       country:[''],
-      zipcode:[''],
-      collageName:[''],
-      degree:[''],
-      percentage:[''],
-      passingYear:[''],
+      pincode:[''],
     })
     this.AllStudent();
   }
@@ -44,18 +41,14 @@ export class StudentDashboardComponent implements OnInit {
   AddStudent(){
    
     this.studentobj.name = this.formValue.value.name;
+    this.studentobj.department = this.formValue.value.department;
     this.studentobj.email = this.formValue.value.email;
-    this.studentobj.phone = this.formValue.value.phone;
+    this.studentobj.mobile = this.formValue.value.mobile;
     this.studentobj.streetNo = this.formValue.value.streetNo;
     this.studentobj.city = this.formValue.value.city;
     this.studentobj.state = this.formValue.value.state;
     this.studentobj.country = this.formValue.value.country;
-    this.studentobj.zipcode = this.formValue.value.zipcode;
-    this.studentobj.collageName = this.formValue.value.collageName;
-    this.studentobj.degree = this.formValue.value.degree;
-    this.studentobj.percentage = this.formValue.value.percentage
-    this.studentobj.passingYear= this.formValue.value.passingYear;
-
+    this.studentobj.pincode = this.formValue.value.pincode;
     this.api.postStudent(this.studentobj).subscribe({
       next: (v) => {console.log(v)},
     error: (e) => {
@@ -78,33 +71,29 @@ export class StudentDashboardComponent implements OnInit {
 
   EditStudent(data:any){
     this.formValue.controls['name'].setValue(data.name);
-   
+    this.formValue.controls['department'].setValue(data.department);
     this.formValue.controls['email'].setValue(data.email);
-    this.formValue.controls['phone'].setValue(data.phone);
+    this.formValue.controls['mobile'].setValue(data.mobile);
     this.formValue.controls['streetNo'].setValue(data.streetNo);
     this.formValue.controls['city'].setValue(data.city);
     this.formValue.controls['country'].setValue(data.country);
-    this.formValue.controls['zipcode'].setValue(data.zipcode);
-    this.formValue.controls['collageName'].setValue(data.collageName);
-    this.formValue.controls['degree'].setValue(data.degree);
-    this.formValue.controls['percentage'].setValue(data.percentage);
+    this.formValue.controls['pincode'].setValue(data.pincode);
     this.studentobj.id = data.id;
     this.UpdateShowBtn();
   }
 
   UpdateStudent(){
     this.studentobj.name = this.formValue.value.name;
+    this.studentobj.department = this.formValue.value.department;
     this.studentobj.email = this.formValue.value.email;
-    this.studentobj.phone = this.formValue.value.phone;
+    this.studentobj.mobile = this.formValue.value.mobile;
     this.studentobj.streetNo = this.formValue.value.streetNo;
     this.studentobj.city = this.formValue.value.city;
     this.studentobj.state = this.formValue.value.state;
     this.studentobj.country = this.formValue.value.country;
-    this.studentobj.zipcode = this.formValue.value.zipcode;
-    this.studentobj.collageName = this.formValue.value.collageName;
-    this.studentobj.degree = this.formValue.value.degree;
-    this.studentobj.percentage = this.formValue.value.percentage
-    this.studentobj.passingYear= this.formValue.value.passingYear;
+    this.studentobj.pincode = this.formValue.value.pincode;
+   
+  
     this.api.putStudent(this.studentobj,this.studentobj.id).subscribe(res => {
       alert("Data Updated");
       this.AllStudent();
